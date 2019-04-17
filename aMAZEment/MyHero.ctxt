@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=MyHero
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ MyHero\ here.\r\n\ \r\n\ @author\ (Penteridou\ Nikolina)\ \r\n\ @version\ (05/2019)\r\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ checkCrash()
+comment2.text=\r\n\ Check\ whether\ the\ ball\ is\ crashing\ on\ the\ wall.\r\n
+comment3.params=
+comment3.target=boolean\ atWorldEdge()
+comment3.text=\r\n\ Test\ if\ we\ are\ close\ to\ one\ of\ the\ edges\ of\ the\ world.\ Return\ true\ if\ we\ are.\r\n
+comment4.params=col
+comment4.target=boolean\ isPath(greenfoot.Color)
+comment4.text=\r\n\ Check\ if\ walking\ on\ the\ path\ (the\ path\ is\ white)\r\n
+comment5.params=x\ y
+comment5.target=greenfoot.Color\ ballColor(int,\ int)
+comment6.params=
+comment6.target=void\ handleKeyPresses()
+comment6.text=\r\n\ Moves\ handling\r\n
+comment7.params=k\ sX\ sY
+comment7.target=void\ handleArrowKey(java.lang.String,\ int,\ int)
+comment7.text=\r\n\ Arrow\ keys\ handling\r\n
+comment8.params=
+comment8.target=void\ goalCompleted()
+comment8.text=\r\n\ Goal\ touched\r\n
+numComments=9
