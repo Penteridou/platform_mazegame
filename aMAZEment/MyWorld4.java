@@ -13,9 +13,18 @@ public class MyWorld4 extends World
      * Constructor for objects of class MyWorld4.
      * 
      */
-    public MyWorld4()
+   
+    public MyWorld4(MyHero mh)
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+       super(1000, 1140, 1); 
+        prepare(mh);
+    }
+    
+    
+    private void prepare(MyHero mh)
+    {
+        Goal goal = new Goal();
+        addObject(goal,410,50); //502, 523
+        addObject(mh,190, 50);
     }
 }

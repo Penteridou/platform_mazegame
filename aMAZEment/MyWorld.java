@@ -35,6 +35,6 @@ public class MyWorld  extends World
         MyHero mh = new MyHero();
         addObject( mh, 160, 50);
         Goal goal = new Goal();
-        addObject(goal,810,50); //810, 200
+        addObject(goal,210,50); //810, 200
     }
 }

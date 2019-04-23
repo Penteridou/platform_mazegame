@@ -107,6 +107,35 @@ public class MyHero extends Others
         switch (lvl){
           case 1 : 
             Greenfoot.setWorld(new MyWorld2(this)) ;
+            level++;
+            break;
+          case 2 : 
+            Greenfoot.setWorld(new MyWorld3(this)) ;
+            level++;
+            break;
+          case 3 : 
+            Greenfoot.setWorld(new MyWorld4(this)) ;
+            level++;
+            break;
+          case 4 : 
+            Greenfoot.setWorld(new MyWorld5(this)) ;
+            level++;
+            break;
+          case 5 : 
+            Greenfoot.setWorld(new MyWorld6(this)) ;
+            level++;
+            break;
+          case 6 : 
+            Greenfoot.setWorld(new MyWorld7(this)) ;
+            level++;
+            break;
+          case 7 : 
+            Greenfoot.setWorld(new MyWorld8(this)) ;
+            level++;
+            break;
+          case 8 : 
+            Greenfoot.setWorld(new MyWorld9(this)) ;
+            level=1;
             break;
         }
     }

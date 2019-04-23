@@ -1,19 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MyWorld5 here.
+ * Write a description of class MyWorld8 here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MyWorld5 extends World
+public class MyWorld8 extends World
 {
 
     /**
-     * Constructor for objects of class MyWorld5.
+     * Constructor for objects of class MyWorld8.
      * 
-     */ 
-        public MyWorld5(MyHero mh)
+     */
+   public MyWorld8(MyHero mh)
     {    
        super(1000, 1140, 1); 
         prepare(mh);
@@ -26,5 +26,4 @@ public class MyWorld5 extends World
         addObject(goal,210,50); //???
         addObject(mh,160, 50);
     }
-    
 }
