@@ -17,7 +17,6 @@ public class MyWorld  extends World
         // Create a new world with 20x20 cells with a cell size of 10x10 pixels.
         super(1000, 1140, 1);
         showMap1();
-        addObject( new MyHero(), 160, 50);
         prepare();
     }
 
@@ -33,7 +32,9 @@ public class MyWorld  extends World
      */
     private void prepare()
     {
+        MyHero mh = new MyHero();
+        addObject( mh, 160, 50);
         Goal goal = new Goal();
-        addObject(goal,506,50); //506, 514
+        addObject(goal,810,50); //810, 200
     }
 }

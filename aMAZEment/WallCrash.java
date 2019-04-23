@@ -39,7 +39,7 @@ public class WallCrash extends Actor
     public synchronized static void initializeImages() 
     {
         if(images == null) {
-            GreenfootImage baseImage = new GreenfootImage("explosion-big.png");
+            GreenfootImage baseImage = new GreenfootImage("boom4.png");
             images = new GreenfootImage[IMAGE_COUNT];
             for (int i = 0; i < IMAGE_COUNT; i++)
             {

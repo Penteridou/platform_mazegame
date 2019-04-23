@@ -1,18 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import javax.swing.JOptionPane; 
 /**
  * Write a description of class MyHero here.
  * 
  * @author (Penteridou Nikolina) 
  * @version (05/2019)
  */
-public class MyHero extends SmoothMover
+public class MyHero extends Others
 {
    
     private static final int SPEED = 3;
     private static final int RADIO = 13;
     private int speedX = SPEED;
     private int speedY = SPEED;
+    private int level = 1;
     
     
     
@@ -20,11 +21,11 @@ public class MyHero extends SmoothMover
     {
      handleKeyPresses();
      //boundedMove();
+     goalAccomplished();  
      checkCrash();
-       
            
     }   
-        
+    
     /**
      * Check whether the ball is crashing on the wall.
      */
@@ -33,7 +34,7 @@ public class MyHero extends SmoothMover
       if ( isPath(ballColor(RADIO,RADIO))||isPath(ballColor(RADIO,-RADIO))||isPath(ballColor(-RADIO,-RADIO))||isPath(ballColor(-RADIO,RADIO))||atWorldEdge())
         {
         
-           MyWorld mw = (MyWorld) getWorld(); 
+           World mw = (World) getWorld(); 
             mw.addObject(new WallCrash(), getX(), getY());
             mw.removeObject(this);
            // mw.gameOver();
@@ -101,20 +102,51 @@ public class MyHero extends SmoothMover
      * Goal touched
      */
     
-    public void goalCompleted(){
-    //isTouching();
-    
+    public void levelUp(MyHero myH, int currentLevel){
+        int lvl = currentLevel;
+        switch (lvl){
+          case 1 : 
+            Greenfoot.setWorld(new MyWorld2(this)) ;
+            break;
+        }
     }
     
-    
-    
+     public void goalAccomplished()
+    {
+        if ( canSee(Goal.class) )
+        {
+            eat(Goal.class);
+           getWorld().removeObject(this);
+           levelUp(this, level);
+           //Greenfoot.stop();
+         
+        }
+    }
     /**
      * The game over screen
      */
     
    //public void gameOver(){}
+    public boolean canSee(Class clss)
+    {
+        Actor actor = getOneObjectAtOffset(0, 0, clss);
+        return actor != null;        
+    }
+
+    
+    /**
+     * Try to eat an object of class 'clss'. This is only successful if there
+     * is such an object where we currently are. Otherwise this method does
+     * nothing.
+     */
+    public void eat(Class clss)
+    {
+        Actor actor = getOneObjectAtOffset(0, 0, clss);
+        if(actor != null) {
+            getWorld().removeObject(actor);
+        }
+    }  
     
     
-    
-    
+  
 }

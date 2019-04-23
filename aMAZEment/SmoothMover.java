@@ -74,4 +74,7 @@ public abstract class SmoothMover extends Actor
     {
         return exactY;
     }
+    
+      
+    
 }

@@ -32,11 +32,6 @@ public class Others extends SmoothMover
             return false;
     }
     
-    
-    /**
-     * Return true if we can see an object of class 'clss' right where we are. 
-     * False if there is no such object here.
-     */
     public boolean canSee(Class clss)
     {
         Actor actor = getOneObjectAtOffset(0, 0, clss);
@@ -55,5 +50,7 @@ public class Others extends SmoothMover
         if(actor != null) {
             getWorld().removeObject(actor);
         }
-    }    
+    }  
+    
+    
 }

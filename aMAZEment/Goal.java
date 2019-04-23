@@ -15,22 +15,10 @@ public class Goal extends Others
      */
     public void act() 
     {
-        goalAccomplished();
+      
     }  
     
-      public void goalAccomplished()
-    {
-        if ( canSee(MyHero.class) )
-        {
-            eat(MyHero.class);
-            //Greenfoot.playSound("au.wav");
-            //score 
-            getWorld().removeObject(this);
-            Greenfoot.setWorld(new MyWorld2());
-            
-        }
-    }
-    
+   
     
     
     
