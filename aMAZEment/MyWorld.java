@@ -16,7 +16,7 @@ public class MyWorld  extends World
     {    
         // Create a new world with 20x20 cells with a cell size of 10x10 pixels.
         super(1000, 1140, 1);
-        showMap1();
+        //showMap1();
         prepare();
     }
 
@@ -37,4 +37,8 @@ public class MyWorld  extends World
         Goal goal = new Goal();
         addObject(goal,210,50); //810, 200
     }
+    
+   
+
+    
 }

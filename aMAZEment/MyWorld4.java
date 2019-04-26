@@ -27,4 +27,6 @@ public class MyWorld4 extends World
         addObject(goal,410,50); //502, 523
         addObject(mh,190, 50);
     }
+    
+    
 }

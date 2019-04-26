@@ -34,10 +34,11 @@ public class MyHero extends Others
       if ( isPath(ballColor(RADIO,RADIO))||isPath(ballColor(RADIO,-RADIO))||isPath(ballColor(-RADIO,-RADIO))||isPath(ballColor(-RADIO,RADIO))||atWorldEdge())
         {
         
-           World mw = (World) getWorld(); 
+            World mw = (World) getWorld();
+            gameOver(level);
             mw.addObject(new WallCrash(), getX(), getY());
             mw.removeObject(this);
-           // mw.gameOver();
+            
         }
     
     
@@ -154,8 +155,38 @@ public class MyHero extends Others
     /**
      * The game over screen
      */
-    
-   //public void gameOver(){}
+    public void gameOver(int currentLevel) 
+        {
+        int lvl = currentLevel;
+        //int score=0   time left + level bonus
+        switch (lvl){
+          case 1 : 
+            getWorld().addObject(new ScoreBoard(100), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            break;
+          case 2 : 
+            getWorld().addObject(new ScoreBoard(200), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            break;
+          case 3 : 
+            getWorld().addObject(new ScoreBoard(300), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            break;
+          case 4 : 
+            getWorld().addObject(new ScoreBoard(400), getWorld().getWidth()/2, getWorld().getHeight()/2);            
+            break;
+          case 5 : 
+            getWorld().addObject(new ScoreBoard(500), getWorld().getWidth()/2, getWorld().getHeight()/2);            
+            break;
+          case 6 : 
+            getWorld().addObject(new ScoreBoard(600), getWorld().getWidth()/2, getWorld().getHeight()/2);            
+            break;
+          case 7 : 
+            getWorld().addObject(new ScoreBoard(700), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            break;
+          case 8 : 
+            getWorld().addObject(new ScoreBoard(800), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            break;
+        }
+        
+    }
     public boolean canSee(Class clss)
     {
         Actor actor = getOneObjectAtOffset(0, 0, clss);

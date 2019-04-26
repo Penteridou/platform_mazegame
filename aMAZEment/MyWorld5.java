@@ -23,8 +23,9 @@ public class MyWorld5 extends World
     private void prepare(MyHero mh)
     {
         Goal goal = new Goal();
-        addObject(goal,210,50); //???
+        addObject(goal,410,50); //506,554
         addObject(mh,160, 50);
     }
     
+     
 }

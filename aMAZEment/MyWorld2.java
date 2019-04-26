@@ -16,7 +16,7 @@ public class MyWorld2 extends World
     public MyWorld2(MyHero mh)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1000, 1140, 1); 
+        super( 1000, 1140, 1); 
         prepare(mh);
     }
     
@@ -24,7 +24,9 @@ public class MyWorld2 extends World
     private void prepare(MyHero mh)
     {
         Goal goal = new Goal();
-        addObject(goal,210,50); //508, 515
+        addObject(goal,410,50); //508, 515
         addObject(mh,160, 50);
     }
+    
+    
 }
