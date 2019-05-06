@@ -8,9 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld7 extends World
 {
-
-    private static Timer  levelTime = new Timer(); // current level timer
+    public static final int TIME = 10;
     
+    private static Timer  levelTime = new Timer(TIME); // current level timer
     /**
      * Constructor for objects of class MyWorld7.
      * 
@@ -26,10 +26,11 @@ public class MyWorld7 extends World
     private void prepare(MyHero mh, Timer t)
     {
         Goal goal = new Goal();
-        addObject(goal,410,50); //902, 816
+        addObject(goal,928, 592); 
         addObject(mh,160, 50);
-        addObject(t,810,50);    // general game timer
-       // addObject(levelTime,610,50);
+        addObject(t,850,50);    // general game timer
+       addObject(levelTime,850,50);
+       addObject(new  ScoreBoard("The Black Hole Maze", true), getWidth()/2, 30);
     }
     
     /**

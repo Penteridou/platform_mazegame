@@ -34,7 +34,7 @@ public class ScoreBoard extends Actor
     //Create a score board for the last level win
     public ScoreBoard(int score, MyHero mh)
     {
-        makeImage("     Nice playing!",  score, mh);
+        makeImage("Thanks for playing!",  score, mh);
     }
     
     public ScoreBoard(String msg){
@@ -43,6 +43,11 @@ public class ScoreBoard extends Actor
     
     }
 
+     public ScoreBoard(String title, boolean ttl ){
+       
+         makeImage(title, true );
+    
+    }
  
     /**
      * Make the score board image.
@@ -90,30 +95,57 @@ public class ScoreBoard extends Actor
         image.scale(600, 600);
         setImage(image);
     }
-    //homescreen image with the rules
+    /**
+     * homescreen image with the rules
+     */
     private void makeImage(String title)
     {
         GreenfootImage image = new GreenfootImage(500, 400);
         
-        image.setColor(new Color(255,255,255, 100));
+        image.setColor(new Color(255,255,255, 128));
         image.fillRect(0, 0, WIDTH, HEIGHT);
         image.setColor(new Color(0, 0, 0, 128));
         image.fillRect(5, 5, WIDTH-10, HEIGHT-10);
         Font font = image.getFont();
         font = font.deriveFont(18.0f);
         image.setFont(font);
-        image.setColor(Color.YELLOW);
+        image.setColor(Color.WHITE);
         
         image.drawString("Welcome to the aMAZEment world!!!", 40, 40);
         image.drawString("How to play:" , 150, 80);
-        image.drawString("Reach and touch the golden gem by  " , 20, 120);
-        image.drawString("moving your crystal ball through the arrows. " , 20, 150);
-        image.drawString("Be careful!! Do not touch any maze wall " , 20, 180);
-        image.drawString("or your crystal ball will instantly explode!" , 20, 210);
-        image.drawString("Ready to play? Click the button below ", 20, 240);
+        image.drawString("Reach and touch the golden gem by moving " , 20, 120);
+        image.drawString(" your crystal ball through the arrows. " , 20, 150);
+        image.drawString("Hurry up and be careful!! Do not touch any  " , 20, 180);
+        image.drawString("maze wallor your crystal ball will explode!" , 20, 210);
+        image.drawString("Ready to play? Click the button below. ", 20, 240);
         //image.drawString("     click to play", 20, 270);
 
         image.scale(1000, 800);
         setImage(image);
     }
+    
+    
+     /**
+     * level title image  
+     */
+    private void makeImage(String title, boolean ttl)
+    {
+        GreenfootImage image = new GreenfootImage(300, 60);
+        
+        image.setColor(new Color(255,255,255, 128));
+        image.fillRect(0, 0, WIDTH, HEIGHT);
+        image.setColor(new Color(0, 0, 0, 128));
+        image.fillRect(5, 5, WIDTH-10, HEIGHT-10);
+        Font font = image.getFont();
+        font = font.deriveFont(28.0f);
+        image.setFont(font);
+        image.setColor(Color.WHITE);
+        
+        image.drawString(title, 23, 40);
+        
+        //image.scale(1000, 800);
+        setImage(image);
+    }
 }
+
+

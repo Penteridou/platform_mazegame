@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld1  extends World
 {
-    public static final int TIME = 10;
+    public static final int TIME = 15;
     
     private static Timer  levelTime = new Timer(TIME); // current level timer
 
@@ -35,10 +35,12 @@ public class MyWorld1  extends World
         MyHero mh = new MyHero();
         addObject( mh, 160, 50);
         Goal goal = new Goal();
-        addObject(goal,210,50); //810, 200
-        //addObject(mh.getCurrentTime(),810,50); // general game timer
-        addObject(levelTime,610,50);
-
+        addObject(goal,810, 200); //810, 200
+        addObject(mh.getCurrentTime(),850,50); // general game timer
+        addObject(levelTime,850,50);
+        addObject(new  ScoreBoard("The Starter Maze", true), getWidth()/2, 30);
+      
+        
     }
     
     /**

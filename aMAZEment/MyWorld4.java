@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld4 extends World
 {
 
-    public static final int TIME = 10;
+    public static final int TIME = 300;
     
     private static Timer  levelTime = new Timer(TIME); // current level timer
 
@@ -28,10 +28,11 @@ public class MyWorld4 extends World
     private void prepare(MyHero mh, Timer t)
     {
         Goal goal = new Goal();
-        addObject(goal,410,50); //502, 523
+        addObject(goal,190, 422); //190, 422
         addObject(mh,190, 50);
-        //addObject(t,810,50);    // general game timer
-      addObject(levelTime,610,50);
+        addObject(t,850,50);    // general game timer
+      addObject(levelTime,850,50);
+      addObject(new  ScoreBoard("The Rope Maze", true), getWidth()/2, 30);
     }
     
     /**
