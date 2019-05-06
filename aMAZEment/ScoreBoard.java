@@ -17,11 +17,11 @@ public class ScoreBoard extends Actor
     public static final int HEIGHT = 300;
     
     /**
-     * Create a score board with dummy result for testing.
+     * Create a score board for time out
      */
-    public ScoreBoard()
+    public ScoreBoard(int score, String timeout)
     {
-        //this();
+        makeImage("Time Out!", "Score: ", score);
     }
 
     /**
@@ -31,10 +31,10 @@ public class ScoreBoard extends Actor
     {
         makeImage("Game Over", "Score: ", score);
     }
-    //mine
-    public ScoreBoard(int score, boolean last)
+    //Create a score board for the last level win
+    public ScoreBoard(int score, MyHero mh)
     {
-        makeImage("Thanks for playing!!!", "Score: ", score);
+        makeImage("     Nice playing!",  score, mh);
     }
     
     public ScoreBoard(String msg){
@@ -62,11 +62,34 @@ public class ScoreBoard extends Actor
         image.drawString(title, 60, 80);
         image.drawString(prefix + score, 60, 140);
         image.drawString("Try again?", 60, 210);
-        image.drawString("Press me", 50, 260);
+        image.drawString("click here", 50, 260);
         //image.scale(500, 500);
         setImage(image);
     }
     
+     /**
+     * Make the last total score board image.
+     */
+    private void makeImage(String title, int score, MyHero mh)
+    {
+        GreenfootImage image = new GreenfootImage(WIDTH, HEIGHT);
+
+        image.setColor(new Color(255,255,255, 128));
+        image.fillRect(10, 0, WIDTH, HEIGHT);
+        image.setColor(new Color(0, 0, 0, 128));
+        image.fillRect(5, 5, WIDTH-10, HEIGHT-10);
+        Font font = image.getFont();
+        font = font.deriveFont(30.0f);
+        image.setFont(font);
+        image.setColor(Color.WHITE);
+        image.drawString(title, 60, 40);
+        image.drawString("  Final score: "+score, 40, 100);
+        image.drawString("  Total time: "+ mh.getCurrentTime().getTime(), 40, 140);
+        image.drawString("   Try again?", 60, 200);
+        image.drawString("click here", 50, 250);
+        image.scale(600, 600);
+        setImage(image);
+    }
     //homescreen image with the rules
     private void makeImage(String title)
     {
@@ -83,12 +106,12 @@ public class ScoreBoard extends Actor
         
         image.drawString("Welcome to the aMAZEment world!!!", 40, 40);
         image.drawString("How to play:" , 150, 80);
-        image.drawString("Reach and touch the golden ball by  " , 20, 120);
-        image.drawString("moving your hero ball through the arrows. " , 20, 150);
-        image.drawString("Be carefull!! Do not touch any maze wall " , 20, 180);
-        image.drawString("or your hero ball will instantly explode!" , 20, 210);
-        image.drawString("Ready to play? Press the smiley face button:) ", 20, 240);
-        image.drawString("                Press me ", 20, 270);
+        image.drawString("Reach and touch the golden gem by  " , 20, 120);
+        image.drawString("moving your crystal ball through the arrows. " , 20, 150);
+        image.drawString("Be careful!! Do not touch any maze wall " , 20, 180);
+        image.drawString("or your crystal ball will instantly explode!" , 20, 210);
+        image.drawString("Ready to play? Click the button below ", 20, 240);
+        //image.drawString("     click to play", 20, 270);
 
         image.scale(1000, 800);
         setImage(image);

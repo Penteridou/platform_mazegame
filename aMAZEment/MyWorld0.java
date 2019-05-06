@@ -16,6 +16,7 @@ public class MyWorld0  extends World
     public MyWorld0()
     {    
         // Create a new world with 20x20 cells with a cell size of 10x10 pixels.
+        
         super(1000, 1140, 1);
         prepare();
         

@@ -32,8 +32,24 @@ public class MyWorld7 extends World
        // addObject(levelTime,610,50);
     }
     
+    /**
+     * reset current level Timer
+     */
+    public static void resetLevelTimer(){
+    levelTime=new Timer(300);
+    }
+    
      public static int calculateLevelScore(){
          int score =  -levelTime.getTime()+700;
          return score;
+    }
+    
+    /**
+     * check if current level Timer is 0 (time out)
+     */
+     public static boolean checkTimeOut(){
+    if(levelTime.getTime()==0)
+        return true;
+    return false;
     }
 }

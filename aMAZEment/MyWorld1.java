@@ -8,8 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld1  extends World
 {
+    public static final int TIME = 10;
     
-    static Timer  levelTime1 = new Timer(10); // current level timer
+    private static Timer  levelTime = new Timer(TIME); // current level timer
 
     /**
      * Create the field.
@@ -35,13 +36,32 @@ public class MyWorld1  extends World
         addObject( mh, 160, 50);
         Goal goal = new Goal();
         addObject(goal,210,50); //810, 200
-        addObject(mh.getCurrentTime(),810,50); // general game timer
-        //addObject(levelTime1,610,50);
+        //addObject(mh.getCurrentTime(),810,50); // general game timer
+        addObject(levelTime,610,50);
 
     }
     
+    /**
+     * reset current level Timer
+     */
+    public static void resetLevelTimer(){
+    levelTime=new Timer(TIME);
+    }
+    
+    /**
+     * check if current level Timer is 0 (time out)
+     */
+    public static boolean checkTimeOut(){
+    if(levelTime.getTime()==0)
+        return true;
+    return false;
+    }
+    
+    /**
+     * Calculates current level score according to the current level time. 
+     */
     public static int calculateLevelScore(){
-         int score =  levelTime1.getTime();//+100;
+         int score =  levelTime.getTime()*5;  //*5 level bonus
          return -score;
     }
     

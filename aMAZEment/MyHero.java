@@ -14,7 +14,7 @@ public class MyHero extends Others
     private int speedX = SPEED;
     private int speedY = SPEED;
     private int level = 1;
-    private Timer currentTime = new Timer(0); //initialize time
+    private Timer totalTime = new Timer(0); //initialize total time
     
     
     
@@ -22,10 +22,9 @@ public class MyHero extends Others
     public void act() 
     {
      handleKeyPresses();
-     //boundedMove();
      goalAccomplished();  
      checkCrash();
-           
+     checkforTimeOuts(level);     
     }   
     
     /**
@@ -37,7 +36,7 @@ public class MyHero extends Others
         {
         
             World mw = (World) getWorld();
-            gameOver(level);
+            gameOver(level, true);
             mw.addObject(new WallCrash(), getX(), getY());
             mw.removeObject(this);
             
@@ -47,11 +46,11 @@ public class MyHero extends Others
     }
 
     /**
-     * current Time return 
+     * Returns current Time  
      */
     
     public Timer getCurrentTime(){
-        return currentTime;
+        return totalTime;
     }
     
     /**
@@ -110,7 +109,7 @@ public class MyHero extends Others
     }
     
     /**
-     * Goal touched- level up!
+     * Level up! To the next level.Creates next world(level).
      */
     
     public void levelUp(MyHero myH, int currentLevel){
@@ -137,26 +136,17 @@ public class MyHero extends Others
             level++;
             break;
           case 6 : 
-            Greenfoot.setWorld(new MyWorld7(this, getCurrentTime())) ;
-            level++;
-            break;
-          case 7 : 
-            Greenfoot.setWorld(new MyWorld8(this, getCurrentTime())) ;
-            level++;
-            break;
-          case 8 : 
-            Greenfoot.setWorld(new MyWorld9(this, getCurrentTime())) ;
-            level++;
-            break;
-          case 9 : 
-            Greenfoot.setWorld(new MyWorld9(this, getCurrentTime())) ;
+            Greenfoot.setWorld(new MyWorld6(this, getCurrentTime())) ;
             level=0;
-            
-            gameOver(0);
+            gameOver(0, true);
             break;
+          
         }
     }
     
+    /**
+     * check if goal is touched 
+     */
      public void goalAccomplished()
     {
         if ( canSee(Goal.class) )
@@ -164,75 +154,136 @@ public class MyHero extends Others
             eat(Goal.class);
            getWorld().removeObject(this);
            levelUp(this, level);
-           //Greenfoot.stop();
-         
+ 
         }
     }
     
-  
+    /**
+     * check current level for timeout
+     */
+    
+    public void checkforTimeOuts(int currentLevel){
+   
+    int lvl = currentLevel;
+    switch (lvl){
+          
+        case 1:
+            if(MyWorld1.checkTimeOut())
+                gameOver(lvl, false);
+            break;
+        case 2:
+            if(MyWorld2.checkTimeOut())
+                gameOver(lvl, false);
+            break;    
+        case 3:
+            if(MyWorld3.checkTimeOut())
+                gameOver(lvl,false);
+            break;
+        case 4:
+            if(MyWorld4.checkTimeOut())
+                gameOver(lvl,false);
+            break;
+        case 5:
+            if(MyWorld5.checkTimeOut())
+                gameOver(lvl,false);
+            break;
+        case 6:
+            if(MyWorld6.checkTimeOut())
+                gameOver(lvl,false);
+            break;
+         
+    }
+    
+    
+    //MyWorld1.checkTimeOut()||MyWorld2.checkTimeOut()||MyWorld3.checkTimeOut()||MyWorld4.checkTimeOut()||MyWorld5.checkTimeOut()||MyWorld6.checkTimeOut()||MyWorld7.checkTimeOut();
+    
+    }
     
     /**
-     * The game over screen
+     * The game over screen with the final score. Calculates score accordingly the currentlevel. Boolean indicates wheather gameover caused by crash or not(timeout).  
      */
-    public void gameOver(int currentLevel) 
+    public void gameOver(int currentLevel, boolean crash) 
         {
         int lvl = currentLevel;
         int score ; 
         Button button = new Button ();
-
+        
+        
         switch (lvl){
           case 1 : 
-            score = 0;
-            getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            score = 0; 
+            if (crash)
+                getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            else
+                getWorld().addObject(new ScoreBoard(score, "timeout"), getWorld().getWidth()/2, getWorld().getHeight()/2);
+                
             getWorld().addObject (button, 600, 660);
+            MyWorld1.resetLevelTimer();
             break;
           case 2 : 
             score = MyWorld1.calculateLevelScore()+MyWorld2.calculateLevelScore();
-            getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            if (crash)
+                getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            else
+                getWorld().addObject(new ScoreBoard(score, "timeout"), getWorld().getWidth()/2, getWorld().getHeight()/2);
+                
             getWorld().addObject (button, 600, 660);
+            MyWorld2.resetLevelTimer();
             break;
           case 3 : 
             score = MyWorld1.calculateLevelScore()+MyWorld2.calculateLevelScore()+MyWorld3.calculateLevelScore();
-            getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            if (crash)
+                getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            else
+                getWorld().addObject(new ScoreBoard(score, "timeout"), getWorld().getWidth()/2, getWorld().getHeight()/2);
+                
             getWorld().addObject (button, 600, 660);
+            MyWorld3.resetLevelTimer();
             break;
           case 4 : 
             score = MyWorld1.calculateLevelScore()+MyWorld2.calculateLevelScore()+MyWorld3.calculateLevelScore()+MyWorld4.calculateLevelScore();
-            getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);  
+            if (crash)
+                getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            else
+                getWorld().addObject(new ScoreBoard(score, "timeout"), getWorld().getWidth()/2, getWorld().getHeight()/2);
+                
             getWorld().addObject (button, 600, 660);
+            MyWorld4.resetLevelTimer();
             break;
           case 5 : 
              score = MyWorld1.calculateLevelScore()+MyWorld2.calculateLevelScore()+MyWorld3.calculateLevelScore()+MyWorld4.calculateLevelScore()+MyWorld5.calculateLevelScore();
-            getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);  
+            if (crash)
+                getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            else
+                getWorld().addObject(new ScoreBoard(score, "timeout"), getWorld().getWidth()/2, getWorld().getHeight()/2);
+                
             getWorld().addObject (button, 600, 660);
+            MyWorld5.resetLevelTimer();
             break;
           case 6 : 
              score = MyWorld1.calculateLevelScore()+MyWorld2.calculateLevelScore()+MyWorld3.calculateLevelScore()+MyWorld4.calculateLevelScore()+MyWorld5.calculateLevelScore()+MyWorld6.calculateLevelScore();
-             getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);            
-            break;
-          case 7 : 
-             score = MyWorld1.calculateLevelScore()+MyWorld2.calculateLevelScore()+MyWorld3.calculateLevelScore()+MyWorld4.calculateLevelScore()+MyWorld5.calculateLevelScore()+MyWorld6.calculateLevelScore()+MyWorld7.calculateLevelScore();
-             getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);
-            break;
-          case 8 : 
-            score = MyWorld1.calculateLevelScore()+MyWorld2.calculateLevelScore()+MyWorld3.calculateLevelScore()+MyWorld4.calculateLevelScore()+MyWorld5.calculateLevelScore()+MyWorld6.calculateLevelScore()+MyWorld7.calculateLevelScore()+MyWorld8.calculateLevelScore();
-            getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);
+             if (crash)
+                getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            else
+                getWorld().addObject(new ScoreBoard(score, "timeout"), getWorld().getWidth()/2, getWorld().getHeight()/2);
+                
             getWorld().addObject (button, 600, 660);
-            break;
-          case 9:
-            score = MyWorld1.calculateLevelScore()+MyWorld2.calculateLevelScore()+MyWorld3.calculateLevelScore()+MyWorld4.calculateLevelScore()+MyWorld5.calculateLevelScore()+MyWorld6.calculateLevelScore()+MyWorld7.calculateLevelScore()+MyWorld8.calculateLevelScore()+MyWorld9.calculateLevelScore();
-            getWorld().addObject(new ScoreBoard(score), getWorld().getWidth()/2, getWorld().getHeight()/2);
-            getWorld().addObject (button, 600, 660);
-            break;
-          default:
-            score = MyWorld1.calculateLevelScore()+MyWorld2.calculateLevelScore()+MyWorld3.calculateLevelScore()+MyWorld4.calculateLevelScore()+MyWorld5.calculateLevelScore()+MyWorld6.calculateLevelScore()+MyWorld7.calculateLevelScore()+MyWorld8.calculateLevelScore()+MyWorld9.calculateLevelScore();
-            getWorld().addObject(new ScoreBoard(score, true), getWorld().getWidth()/2, getWorld().getHeight()/2);
-            getWorld().addObject (button, 600, 660);
+            MyWorld6.resetLevelTimer();
+            break;  
+          default:  //game last level finished - score calculation includes total time
+            score = MyWorld1.calculateLevelScore()+MyWorld2.calculateLevelScore()+MyWorld3.calculateLevelScore()+MyWorld4.calculateLevelScore()+MyWorld5.calculateLevelScore()+MyWorld6.calculateLevelScore();
+            score  = score - getCurrentTime().getTime()/10;
+            getWorld().addObject(new ScoreBoard(score, this), getWorld().getWidth()/2, getWorld().getHeight()/2);
+            getWorld().addObject (button, 551, 747);
           break;
         }
         
         //Greenfoot.stop();
     }
+    
+    /**
+     * check if you can see an object.
+     */
     public boolean canSee(Class clss)
     {
         Actor actor = getOneObjectAtOffset(0, 0, clss);

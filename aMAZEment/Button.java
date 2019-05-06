@@ -8,11 +8,10 @@ public class Button extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        //Greenfoot.stop();
         if (Greenfoot.mousePressed(this))
         {
                       Greenfoot.setWorld (new MyWorld1 ());
-
         }
     }
 }

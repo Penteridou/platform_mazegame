@@ -38,8 +38,9 @@ public  class Timer extends Actor
  
     private void updateImage()
     {
-        String prefix = "T - ";
-        if (count >= 0) prefix = "T + ";
+        String prefix = "Time: - ";
+        if (count >= 0) 
+            prefix = "Time: + ";
         int time = count * (int)Math.signum(count);
         time = time / 60;
         int secs = time % 60;
